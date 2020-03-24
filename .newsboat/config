@@ -1,0 +1,2 @@
+browser "surf %u"
+download-full-page "yes"
