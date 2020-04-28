@@ -1,3 +1,4 @@
+set expandtab
 set number
 set relativenumber
 set ts=4 sw=4
@@ -8,8 +9,10 @@ set smarttab " Autotabs for certain code
 set nowrap
 execute pathogen#infect()
 filetype plugin indent on
-set background=dark
-colorscheme palenight
+colorscheme dracula
 nnoremap ; :
-let g:lightline = { 'colorscheme': 'palenight' }
+let g:dracula_colorterm = 0
+let g:lightline = {
+      \ 'colorscheme': 'nord',
+      \ }
 

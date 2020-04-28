@@ -15,6 +15,9 @@ alias swagger-codegen="java -jar ~/Applications/SwaggerGen/swagger-codegen-cli.j
 alias openapi-gen="java -jar ~/Applications/open-api/openapi-generator-cli.jar"
 alias daily="vim  ~/Documents/ChinaNetCloud/Reports/DailyReport.md"
 alias emacs="emacs -nw"
-alias doas="doas -- "
-alias sudo="doas" 
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+alias tmx='tmux attach -t base || tmux new -s base'
+alias ddg='sr duckduckgo -browser=lynx '
+alias bmatrix='cmatrix -b -C blue'
+alias i3config='code .config/regolith/'
+alias jbl='bash ~/scripts/jbl.sh'

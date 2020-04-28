@@ -1,2 +1,2 @@
-browser "surf %u"
+browser "w3m %u"
 download-full-page "yes"
