@@ -6,7 +6,13 @@
 set $mod Mod4
 set $alt Mod1
 
-font pango:SF UI Display 12
+set $i3Font "pango:SF UI Display 10"
+set $i3BarFont "pango:SF UI Display 10, FontAwesome 10"
+
+set $rofiFont "SF UI Display 16"
+set $rofiTheme ~/.config/regolith/styles/lascaille/rofi.rasi
+
+font $i3Font
 
 ###############################################################################
 # Workspace Names
@@ -63,8 +69,6 @@ bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
 
-
-
 ## Navigate // Next Workspace // <> Tab ##
 bindsym $mod+Tab workspace next
 ## Navigate // Next Workspace // <><Alt> → ##
@@ -87,17 +91,14 @@ bindsym $mod+Return exec /usr/bin/x-terminal-emulator
 ## Launch // Browser // <><Shift> Enter ##
 bindsym $mod+Shift+Return exec gtk-launch $(xdg-settings get default-web-browser)
 
-set $rofiTheme ~/.config/regolith/styles/lascaille/rofi.rasi
-
 ## Launch // Application // <> Space ##
-bindsym $mod+space exec rofi -show drun -theme $rofiTheme
+bindsym $mod+space exec rofi -show drun -theme $rofiTheme -font $rofiFont
 ## Launch // Command // <><Shift> Space ##
-bindsym $mod+Shift+space exec rofi -show run -theme $rofiTheme
+bindsym $mod+Shift+space exec rofi -show run -theme $rofiTheme -font $rofiFont
 ## Navigate // Window by Name // <><Ctrl> Space ##
-bindsym $mod+Ctrl+space exec rofi -show window -theme $rofiTheme
+bindsym $mod+Ctrl+space exec rofi -show window -theme $rofiTheme -font $rofiFont
 ## Launch // File Search // <><Alt> Space ##
-bindsym $mod+$alt+space exec rofi -show find -modi find:/usr/share/rofi/modi/finder.sh
-
+bindsym $mod+$alt+space exec rofi -show find -modi find:/usr/share/rofi/modi/finder.sh -font $rofiFont
 ## Launch // This Dialog // <><Shift> ? ##
 bindsym $mod+Shift+question exec --no-startup-id /usr/bin/remontoire-toggle
 
@@ -380,41 +381,41 @@ set_from_resource $i3-wm.bar.workspace.urgent.text.color i3-wm.bar.workspace.urg
 # i3 Bar
 ###############################################################################
 
-# The bar configuration
-bar {
-    # i3bar_command i3bar --transparency
-    position top
-    height 32
-    separator_symbol ":"
-
-    # font pango:SF UI Display 11, Material Design Icons 10
-    # status_command i3xrocks -u ~/.config/regolith/i3xrocks/conf.d -d /etc/regolith/i3xrocks/conf.d
-
-    font pango:SF UI Display 10
-    status_command bumblebee-status \
-        -m mocp battery vpn time \
-        -p time.format="%H:%M" \
-        -p mocp.format="%artist-%song(%album)" \
-        -p battery.decorate=false \
-        -t nord
-
-    mode dock
-    tray_output primary
-    workspace_buttons yes
-    strip_workspace_numbers yes
-
-    colors {
-        background $i3-wm.bar.background.color
-        statusline $i3-wm.bar.statusline.color
-        separator  $i3-wm.bar.separator.color
-
-        #                  BORDER                                         BACKGROUND                                      TEXT
-        focused_workspace  $i3-wm.bar.workspace.focused.border.color      $i3-wm.bar.workspace.focused.background.color   $i3-wm.bar.workspace.focused.text.color
-        active_workspace   $i3-wm.bar.workspace.active.border.color       $i3-wm.bar.workspace.active.background.color    $i3-wm.bar.workspace.active.text.color
-        inactive_workspace $i3-wm.bar.workspace.inactive.border.color     $i3-wm.bar.workspace.inactive.background.color  $i3-wm.bar.workspace.inactive.text.color
-        urgent_workspace   $i3-wm.bar.workspace.urgent.border.color       $i3-wm.bar.workspace.urgent.background.color    $i3-wm.bar.workspace.urgent.text.color
-    }
-}
+#####     # The bar configuration
+#####     bar {
+#####         # i3bar_command i3bar --transparency
+#####         position top
+#####         height 26
+#####         separator_symbol "|"
+#####
+#####         # font pango:SF UI Display 11, Material Design Icons 10
+#####         # status_command i3xrocks -u ~/.config/regolith/i3xrocks/conf.d -d /etc/regolith/i3xrocks/conf.d
+#####
+#####         font $i3BarFont
+#####         status_command bumblebee-status \
+#####             -m mocp battery vpn time \
+#####             -p time.format="%H:%M" \
+#####             -p mocp.format="%artist-%song(%album)" \
+#####             -t simple
+#####     # -p battery.decorate=false
+#####
+#####         mode dock
+#####         tray_output primary
+#####         workspace_buttons yes
+#####         strip_workspace_numbers yes
+#####
+#####         colors {
+#####             background $i3-wm.bar.background.color
+#####             statusline $i3-wm.bar.statusline.color
+#####             separator  $i3-wm.bar.separator.color
+#####
+#####             #                  BORDER                                         BACKGROUND                                      TEXT
+#####             focused_workspace  $i3-wm.bar.workspace.focused.border.color      $i3-wm.bar.workspace.focused.background.color   $i3-wm.bar.workspace.focused.text.color
+#####             active_workspace   $i3-wm.bar.workspace.active.border.color       $i3-wm.bar.workspace.active.background.color    $i3-wm.bar.workspace.active.text.color
+#####             inactive_workspace $i3-wm.bar.workspace.inactive.border.color     $i3-wm.bar.workspace.inactive.background.color  $i3-wm.bar.workspace.inactive.text.color
+#####             urgent_workspace   $i3-wm.bar.workspace.urgent.border.color       $i3-wm.bar.workspace.urgent.background.color    $i3-wm.bar.workspace.urgent.text.color
+#####         }
+#####     }
 
 ###############################################################################
 # External programs launched with i3
@@ -429,6 +430,7 @@ exec --no-startup-id /usr/bin/regolith-ftue
 # Hide the mouse pointer if unused for a duration
 exec --no-startup-id /usr/bin/regolith-ftue /usr/bin/unclutter -b
 
-exec --no-startup-id dbus-launch nm-applet
-exec --no-startup-id nitrogen --restore &
+exec --no-startup-id nm-applet
+
+exec --no-startup-id gnome-panel
 
