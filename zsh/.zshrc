@@ -68,9 +68,6 @@ complete -o nospace -C /usr/local/bin/bitcomplete bit
 
 export PATH=/home/$USER/.config/nvcode/utils/bin:$PATH
 
-
-export OPENAI_API_KEY="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"
-
 # Start pcloud ios-sync
 # pgrep -x ios-sync >/dev/null && echo "ios-sync is already running" || ios-sync &
 
