@@ -1,0 +1,21 @@
+#!/bin/bash
+
+~/.config/rofi/scripts/current-wallpaper.sh
+
+arg=$1
+
+case "$arg" in
+    "drun")
+        rofi -show drun
+        ;;
+    "window")
+        rofi -show window
+        ;;
+    "ssh")
+        rofi -show ssh
+        ;;
+    *)
+        echo "Invalid argument"
+        ;;
+esac
+rofi -show drun
