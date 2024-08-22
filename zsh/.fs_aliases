@@ -18,7 +18,6 @@ alias install="sudo nala install"
 alias remove="sudo nala remove"
 
 alias cat='bat --color=always'
-alias cd='z'
 
 alias fzf='fzf --preview="bat --color=always {}"'
 alias emacs="emacs &"

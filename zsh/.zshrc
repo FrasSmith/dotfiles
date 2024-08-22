@@ -92,11 +92,7 @@ export PATH=/home/fraser/.nimble/bin:$PATH
 export STARSHIP_CONFIG=~/.config/starship/starship.toml
 eval "$(starship init zsh)"
 
-eval "$(zoxide init zsh)"
-
-
 # eval "$(starship preset tokyo-night)"
-
 
 # ZSH_THEME="dst"
 
