@@ -1,0 +1,2 @@
+tilix --quake && tilix -a app-new-session -e "ranger" && tilix -a app-new-session -e "mocp"
+
